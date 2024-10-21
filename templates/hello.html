@@ -1,0 +1,49 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webpage.css') }}" media="screen" />
+
+<html>
+    <head>
+        <title>Photoshare</title>
+    </head>
+    <body>
+        <h1>Hello {{ name }}!!</h1>
+        <h3>
+            <a href="{{ url_for('welcome') }}">Logout</a>
+        </h3>
+        <br>
+        <h2><a href="{{ url_for('upload') }}">Upload a new photo</a></h2>
+        {% if photos %}
+        <h2>Here are your photos!</h2>
+            <ul>
+                {% for photo in photos %}
+                    <li>{{photo[2]}}<br>
+                    <img src='data:image/jpg;base64, {{ base64.b64encode(photo[0]).decode("ascii") }}'/></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3> You have no photos </h3>
+        {% endif %}
+        <br>
+        <br>
+        {% if friends %}
+        <h2>Here are your friends!</h2>
+            <ul> 
+                {% for friend in friends %}
+                    <li>{{ friend }}</li>
+                {% endfor %}
+            </ul>
+            <br>
+            <h3>We recommend these friends for you!</h3>
+            <ul>
+                {% for recfriend in recfriends %}
+                    <li>{{ recfriend }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h3>You have no friends</h3>
+        {% endif %}
+    </body>
+</html>
+
+<img logo src="{{ url_for('static', filename='camera.png' )}}" class="center" />
+<h3>Photoshare</h3>

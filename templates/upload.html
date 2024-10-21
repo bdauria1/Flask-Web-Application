@@ -1,0 +1,23 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/webpage.css') }}" media="screen" />
+
+<html>
+    <head>
+        <title>Upload a Photo!</title>
+    </head>
+    <body>
+        <div class="title">
+            <h1>Upload a photo to Photoshare</h1>
+        </div>
+            <form method="post" enctype="multipart/form-data" action="/upload" name="form" style="width: 200px; display: block; margin-left: auto;margin-right: auto;">
+                <label for="photo">Select photo:</label>
+                <input type="file" name="photo" required='true' /><br />
+                <label for="caption">Please caption:</label>
+                <input type="text" name="caption" required='true' /><br />
+                <input type="submit" value="Upload" />
+            </form>
+    </body>
+</html>
+
+<img logo src="{{ url_for('static', filename='camera.png' )}}" class="center" />
+<h3>Photoshare</h3>
